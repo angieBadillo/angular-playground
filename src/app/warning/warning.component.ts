@@ -7,7 +7,8 @@ import { Component } from '@angular/core';
         text-align: center;
         padding: 20px;
         border: solid red 2px;
-        background-color: pink;
+        background-color: lightcoral;
+        color: white;
     }`]
 })
 
