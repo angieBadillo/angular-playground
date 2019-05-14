@@ -1,2 +1,48 @@
-<app-server></app-server>
-<app-server></app-server>
+<label>Server Name</label>
+<!-- <input 
+    type="text" 
+    class="form-control"
+    (input)="onUpdateServerName($event)"> -->
+
+<!-- Two ways Data Binding -->
+<input type="text" class="form-control" [(ngModel)]="serverName">
+
+
+<!-- <p>{{ serverName }}</p> -->
+<button 
+    class="btn btn-primary" 
+    [disabled]="!allowNewServer" 
+    (click)="onCreateServer()"
+    >Add Server
+</button>
+<p *ngIf="serverCreated; else noServer">Server was created, server name is {{ serverName }}</p>
+<ng-template #noServer>
+    <p>No server was created</p>
+</ng-template>
+<!--p [innerText] = "allowNewServer"></p-->
+<!-- <p>{{ serverCreationStatus }}</p> -->
+<app-server *ngFor="let server of servers"></app-server>
+
+
+<!-- User example -->
+<!-- <label>Username</label>
+<input type="text" class="form-control" [(ngModel)]="userName">
+<p> {{ userName }} </p>
+<button 
+    class="btn btn-primary" 
+    [disabled]="userName === ''"
+    (click) = "userName = ''">
+    Reset
+</button> -->
+
+<!-- details example -->
+<button class="btn btn-primary" (click)="onToggleDetails()">Display Details</button>
+<p *ngIf="showSecret">secret password = tuna</p>
+<div
+    *ngFor="let logItem of log; let i = index"
+    [ngStyle]="{backgroundColor: i >= 4 ? 'lightyellow' : 'transparent'}"
+    [ngClass]="{'white-text': i >= 4}"
+    >{{ logItem }}
+</div>
+
+
